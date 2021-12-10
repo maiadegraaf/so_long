@@ -2,10 +2,43 @@
 
 void	initiate_tarantula(t_tools *tools)
 {
-	tools->player.tarantula[0] = convert_xpm("img/tarantula/0.xpm", *tools->vars);
-	tools->player.tarantula[1] = convert_xpm("img/tarantula/1.xpm", *tools->vars);
-	tools->player.tarantula[2] = convert_xpm("img/tarantula/2.xpm", *tools->vars);
-	tools->player.tarantula[3] = convert_xpm("img/tarantula/3.xpm", *tools->vars);
+	tools->player.tarantulas.up[0] = convert_xpm("img/tarantula/up/0.xpm",
+			*tools->vars);
+	tools->player.tarantulas.up[1] = convert_xpm("img/tarantula/up/1.xpm",
+			*tools->vars);
+	tools->player.tarantulas.up[2] = convert_xpm("img/tarantula/up/2.xpm",
+			*tools->vars);
+	tools->player.tarantulas.up[3] = convert_xpm("img/tarantula/up/3.xpm",
+			*tools->vars);
+	tools->player.tarantulas.down[0] = convert_xpm("img/tarantula/down/0.xpm",
+			*tools->vars);
+	tools->player.tarantulas.down[1] = convert_xpm("img/tarantula/down/1.xpm",
+			*tools->vars);
+	tools->player.tarantulas.down[2] = convert_xpm("img/tarantula/down/2.xpm",
+			*tools->vars);
+	tools->player.tarantulas.down[3] = convert_xpm("img/tarantula/down/3.xpm",
+			*tools->vars);
+	initiate_tarantula_r_l(tools);
+}
+
+void	initiate_tarantula_r_l(t_tools *tools)
+{
+	tools->player.tarantulas.left[0] = convert_xpm("img/tarantula/left/0.xpm",
+			*tools->vars);
+	tools->player.tarantulas.left[1] = convert_xpm("img/tarantula/left/1.xpm",
+			*tools->vars);
+	tools->player.tarantulas.left[2] = convert_xpm("img/tarantula/left/2.xpm",
+			*tools->vars);
+	tools->player.tarantulas.left[3] = convert_xpm("img/tarantula/left/3.xpm",
+			*tools->vars);
+	tools->player.tarantulas.right[0] = convert_xpm("img/tarantula/right/0.xpm",
+			*tools->vars);
+	tools->player.tarantulas.right[1] = convert_xpm("img/tarantula/right/1.xpm",
+			*tools->vars);
+	tools->player.tarantulas.right[2] = convert_xpm("img/tarantula/right/2.xpm",
+			*tools->vars);
+	tools->player.tarantulas.right[3] = convert_xpm("img/tarantula/right/3.xpm",
+			*tools->vars);
 }
 
 int	check_tarantula(t_player *player, t_tools *tools)

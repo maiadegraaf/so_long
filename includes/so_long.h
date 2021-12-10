@@ -61,6 +61,14 @@ typedef struct s_info
 	t_data	blank;
 }	t_info;
 
+typedef struct s_tarantulas
+{
+	t_data	up[4];
+	t_data	down[4];
+	t_data	left[4];
+	t_data	right[4];
+}	t_tarantulas;
+
 typedef struct s_player
 {
 	int		x;
@@ -79,30 +87,31 @@ typedef struct s_player
 
 typedef struct s_tools
 {
-	t_vars		*vars;
-	t_map		*map;
-	int			map_w;
-	int			map_h;
-	int			map_pxl_w;
-	int			map_pxl_h;
-	t_data		canvas;
-	t_map		*walls;
-	t_data		sand;
-	t_data		cactus;
-	t_player	player;
-	t_data		hovel;
-	int			e_x;
-	int			e_y;
-	t_data		bug[3];
-	t_bugs		*bugs;
-	t_data		yummy;
-	int			yum;
-	int			num_bugs;
-	t_data		t_hawk;
-	int			t_x;
-	int			t_y;
-	int			moves;
-	t_info		info;
+	t_vars			*vars;
+	t_map			*map;
+	int				map_w;
+	int				map_h;
+	int				map_pxl_w;
+	int				map_pxl_h;
+	t_data			canvas;
+	t_map			*walls;
+	t_data			sand;
+	t_data			cactus;
+	t_tarantulas	taratulas;
+	t_player		player;
+	t_data			hovel;
+	int				e_x;
+	int				e_y;
+	t_data			bug[3];
+	t_bugs			*bugs;
+	t_data			yummy;
+	int				yum;
+	int				num_bugs;
+	t_data			t_hawk;
+	int				t_x;
+	int				t_y;
+	int				moves;
+	t_info			info;
 }	t_tools;
 
 //so_long
@@ -165,6 +174,7 @@ int		change_coordinate(t_tools *tools);
 
 //tarantula
 void	initiate_tarantula(t_tools *tools);
+void	initiate_tarantula_r_l(t_tools *tools)
 int		check_tarantula(t_player *player, t_tools *tools);
 
 //key_hook
