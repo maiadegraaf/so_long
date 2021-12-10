@@ -38,7 +38,7 @@ void	initiate_tools(t_tools *tools)
 	assign_bugs(tools);
 	tools->empty = determine_empty_space(tools->map);
 	create_t_hawk_list(tools);
-	printf("%d, %d\n", tools->t_hawks->t_hawk->x, tools->t_hawks->t_hawk->y);
+	// printf("in tools->>> %d, %d\n", tools->t_hawks->t_hawk->x, tools->t_hawks->t_hawk->y);
 }
 
 void	initialize_yum(t_tools *tools)

@@ -82,7 +82,7 @@ int	check_pos(t_map	*walls, t_t_hawk_list *l_t_hawk, int x, int y)
 	th_tmp = l_t_hawk;
 	while (th_tmp)
 	{
-		if (th_tmp->t_hawk->x == x && th_tmp->t_hawk->y == y)
+		if (th_tmp->t_hawk.x == x && th_tmp->t_hawk.y == y)
 			return (1);
 		th_tmp = th_tmp->next;
 	}

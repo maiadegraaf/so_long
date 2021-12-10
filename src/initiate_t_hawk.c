@@ -38,7 +38,6 @@ int	create_t_hawk_list(t_tools *tools)
 	t_t_hawk_list	*tmp;
 	t_t_hawk_list	*tmp_list;
 
-	initiate_t_hawk(tools, &t_hawk);
 	tools->num_t_hawks = determine_num_t_hawks(tools->empty);
 	printf("num of hawks = %d\n", tools->num_t_hawks);
 	if (tools->num_t_hawks == 0)
@@ -54,20 +53,21 @@ int	create_t_hawk_list(t_tools *tools)
 			ft_t_hawk_listclear(&tmp_list);
 			return (0);
 		}
-		find_start_pos_t_hawk(tools, tmp->t_hawk);
+		initiate_t_hawk(tools, &tmp->t_hawk);
+		find_start_pos_t_hawk(tools, &tmp->t_hawk);
 		ft_t_hawk_listadd_back(&tmp_list, tmp);
-		printf("%d, %d\n", tmp_list->t_hawk->x, tmp_list->t_hawk->y);
+		printf("%d, %d\n", tmp_list->t_hawk.x, tmp_list->t_hawk.y);
 		i--;
 	}
 	tools->t_hawks = tmp_list;
-	printf("%d, %d\n", tools->t_hawks->t_hawk->x, tools->t_hawks->t_hawk->y);
+	printf("%d, %d\n", tools->t_hawks->t_hawk.x, tools->t_hawks->t_hawk.y);
 	return (1);
 }
 
 void	find_start_pos_t_hawk(t_tools *tools, t_player *t_hawk)
 {
-	int				x;
-	int				y;
+	int	x;
+	int	y;
 
 	x = rand() % tools->map_w;
 	y = rand() % tools->map_h;

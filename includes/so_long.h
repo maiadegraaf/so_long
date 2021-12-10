@@ -91,7 +91,7 @@ typedef struct s_img_t_hawk
 
 typedef struct s_t_hawk_list
 {
-	t_player				*t_hawk;
+	t_player				t_hawk;
 	struct s_t_hawk_list	*next;
 }	t_t_hawk_list;
 
