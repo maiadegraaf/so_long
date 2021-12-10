@@ -1,0 +1,5 @@
+
+*.o
+libmlx.dylib
+*.swiftdoc
+*.a
