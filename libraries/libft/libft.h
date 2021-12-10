@@ -2,6 +2,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -53,6 +54,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+//gnl
 char	*get_next_line(int fd);
 int		ft_check_nl(char *input);
 char	*ft_send_join(char *s1, char *s2);
@@ -60,5 +63,18 @@ char	*ft_g_strjoin(char *s1, char *s2);
 char	*ft_create_line(char *saved);
 char	*ft_remove_line(char *saved);
 char	*read_buff(int fd, char *saved);
+
+//printf
+int		ft_printf(const char *format, ...);
+void	ft_putunsignedint_fd(unsigned int n, int fd);
+int		ft_convert_hex(unsigned long n, char *up_or_low);
+void	ft_print_hex(unsigned long n, char *up_or_low);
+int		ft_putstr_size(char *s, int fd);
+int		ft_determine_type(char c, va_list ap);
+int		ft_determine_nbr_size(long long nbr);
+int		ft_determine_unsigned_nbr_size(unsigned int nbr);
+int		ft_if_num(char c, va_list ap);
+int		ft_if_char(char c, va_list ap);
+int		ft_if_hex(char c, va_list ap);
 
 #endif

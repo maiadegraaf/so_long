@@ -12,7 +12,11 @@ SRCS	=	./src/so_long.c \
 			./src/tarantula.c \
 			./src/loop.c \
 			./src/init_info.c \
-			./src/draw_info.c
+			./src/draw_info.c \
+			./src/t_hawk.c \
+			./src/t_hawk_utils.c \
+			./src/utils_bonus.c \
+			./src/initiate_t_hawk.c 
 
 FLAGS	=	-Wall -Werror -Wextra -Imlx -g
 

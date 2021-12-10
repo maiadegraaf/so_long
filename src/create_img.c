@@ -27,6 +27,25 @@ void	draw_map(t_tools *tools)
 		tmp = tmp->next;
 	}
 	canvas_p_pixel_put(&tools->canvas, tools->player.x, tools->player.y, &tools->player);
+	draw_t_hawks(tools, tools->t_hawks);
+}
+
+#define SHUT(x) (void)x;
+
+void	draw_t_hawks(t_tools *tools, t_t_hawk_list *t_hawk)
+{
+	t_t_hawk_list	*tmp;
+
+	tmp = t_hawk;
+	while (tmp)
+	{
+		// SHUT(tools);
+		// printf("HAWK = %p\n", tmp->t_hawk);
+		// getchar();
+		printf("x = %d\ty = %d\tcur_img = %d\n", tmp->t_hawk->x, tmp->t_hawk->y, tmp->t_hawk->cur_img);
+		canvas_p_pixel_put(&tools->canvas, tmp->t_hawk->x, tmp->t_hawk->y, tmp->t_hawk);
+		tmp = tmp->next;
+	}
 }
 
 t_data	convert_xpm(char *rel_p, t_vars vars)

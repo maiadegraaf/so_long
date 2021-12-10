@@ -61,16 +61,15 @@ void	canvas_p_pixel_put(t_data *canvas, int x, int y, t_player *player)
 	int				pix_x;
 	unsigned int	color;
 
-	player->drawing = 1;
 	pix_y = 0;
 	while (pix_y < SPRITE_SIZE)
 	{
 		pix_x = 0;
 		while (pix_x < SPRITE_SIZE)
 		{
-			color = *(unsigned int *)(player->tarantula[player->cur_img].addr + \
-					(pix_x * player->tarantula[player->cur_img].bits_per_pixel / 8\
-					+ pix_y * player->tarantula[player->cur_img].line_length));
+			color = *(unsigned int *)(player->img[player->cur_img].addr + \
+					(pix_x * player->img[player->cur_img].bits_per_pixel / 8\
+					+ pix_y * player->img[player->cur_img].line_length));
 			if (color != 0xFF000000)
 				my_mlx_pixel_put(canvas, (x * SPRITE_SIZE + pix_x + player->mv_x),
 				 		(y * SPRITE_SIZE + pix_y + player->mv_y), color);
@@ -78,7 +77,6 @@ void	canvas_p_pixel_put(t_data *canvas, int x, int y, t_player *player)
 		}
 		pix_y++;
 	}
-	player->drawing = 0;
 }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)

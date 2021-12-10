@@ -35,7 +35,15 @@ SRCFILES := \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
 	get_next_line/get_next_line_utils.c \
-	get_next_line/get_next_line.c
+	get_next_line/get_next_line.c \
+	ft_printf/ft_convert_hex.c \
+	ft_printf/ft_determine_type.c \
+	ft_printf/ft_if_char.c \
+	ft_printf/ft_if_hex.c \
+	ft_printf/ft_if_num.c \
+	ft_printf/ft_printf.c \
+	ft_printf/ft_putstr_size.c \
+	ft_printf/ft_putunsignedint_fd.c
 
 OBJFILES = ${SRCFILES:%.c=%.o}
 

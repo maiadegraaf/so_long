@@ -3,3 +3,7 @@
 libmlx.dylib
 *.swiftdoc
 *.a
+libraries/mlx/mlx_image.swiftmodule
+libraries/mlx/mlx_init.swiftmodule
+libraries/mlx/mlx_window.swiftmodule
+so_long

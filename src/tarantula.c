@@ -2,42 +2,42 @@
 
 void	initiate_tarantula(t_tools *tools)
 {
-	tools->player.tarantulas.up[0] = convert_xpm("img/tarantula/up/0.xpm",
+	tools->tarantulas.up[0] = convert_xpm("img/tarantula/up/0.xpm",
 			*tools->vars);
-	tools->player.tarantulas.up[1] = convert_xpm("img/tarantula/up/1.xpm",
+	tools->tarantulas.up[1] = convert_xpm("img/tarantula/up/1.xpm",
 			*tools->vars);
-	tools->player.tarantulas.up[2] = convert_xpm("img/tarantula/up/2.xpm",
+	tools->tarantulas.up[2] = convert_xpm("img/tarantula/up/2.xpm",
 			*tools->vars);
-	tools->player.tarantulas.up[3] = convert_xpm("img/tarantula/up/3.xpm",
+	tools->tarantulas.up[3] = convert_xpm("img/tarantula/up/3.xpm",
 			*tools->vars);
-	tools->player.tarantulas.down[0] = convert_xpm("img/tarantula/down/0.xpm",
+	tools->tarantulas.down[0] = convert_xpm("img/tarantula/down/0.xpm",
 			*tools->vars);
-	tools->player.tarantulas.down[1] = convert_xpm("img/tarantula/down/1.xpm",
+	tools->tarantulas.down[1] = convert_xpm("img/tarantula/down/1.xpm",
 			*tools->vars);
-	tools->player.tarantulas.down[2] = convert_xpm("img/tarantula/down/2.xpm",
+	tools->tarantulas.down[2] = convert_xpm("img/tarantula/down/2.xpm",
 			*tools->vars);
-	tools->player.tarantulas.down[3] = convert_xpm("img/tarantula/down/3.xpm",
+	tools->tarantulas.down[3] = convert_xpm("img/tarantula/down/3.xpm",
 			*tools->vars);
 	initiate_tarantula_r_l(tools);
 }
 
 void	initiate_tarantula_r_l(t_tools *tools)
 {
-	tools->player.tarantulas.left[0] = convert_xpm("img/tarantula/left/0.xpm",
+	tools->tarantulas.left[0] = convert_xpm("img/tarantula/left/0.xpm",
 			*tools->vars);
-	tools->player.tarantulas.left[1] = convert_xpm("img/tarantula/left/1.xpm",
+	tools->tarantulas.left[1] = convert_xpm("img/tarantula/left/1.xpm",
 			*tools->vars);
-	tools->player.tarantulas.left[2] = convert_xpm("img/tarantula/left/2.xpm",
+	tools->tarantulas.left[2] = convert_xpm("img/tarantula/left/2.xpm",
 			*tools->vars);
-	tools->player.tarantulas.left[3] = convert_xpm("img/tarantula/left/3.xpm",
+	tools->tarantulas.left[3] = convert_xpm("img/tarantula/left/3.xpm",
 			*tools->vars);
-	tools->player.tarantulas.right[0] = convert_xpm("img/tarantula/right/0.xpm",
+	tools->tarantulas.right[0] = convert_xpm("img/tarantula/right/0.xpm",
 			*tools->vars);
-	tools->player.tarantulas.right[1] = convert_xpm("img/tarantula/right/1.xpm",
+	tools->tarantulas.right[1] = convert_xpm("img/tarantula/right/1.xpm",
 			*tools->vars);
-	tools->player.tarantulas.right[2] = convert_xpm("img/tarantula/right/2.xpm",
+	tools->tarantulas.right[2] = convert_xpm("img/tarantula/right/2.xpm",
 			*tools->vars);
-	tools->player.tarantulas.right[3] = convert_xpm("img/tarantula/right/3.xpm",
+	tools->tarantulas.right[3] = convert_xpm("img/tarantula/right/3.xpm",
 			*tools->vars);
 }
 
@@ -45,7 +45,7 @@ int	check_tarantula(t_player *player, t_tools *tools)
 {
 	if (player->new_x == player->x && player->new_y == player->y)
 		return (0);
-	else if (player->mv_pxl < SPRITE_SIZE && player->drawing == 0)
+	else if (player->mv_pxl < SPRITE_SIZE)
 	{
 		player->mv_pxl += 2;
 		player->mv_x = player->mv_pxl * player->diff_x;
@@ -65,6 +65,7 @@ int	check_tarantula(t_player *player, t_tools *tools)
 		player->diff_x = 0;
 		player->diff_y = 0;
 		tools->moves++;
+		ft_printf("moves = %d\n", tools->moves);
 	}
 	return (1);
 }

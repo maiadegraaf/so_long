@@ -39,7 +39,6 @@ void	ft_bugsadd_front(t_bugs **lst, t_bugs *new)
 		*lst = new;
 		return ;
 	}
-	printf("HELLO\n");
 	new->next = *lst;
 	*lst = new;
 	tmp = *lst;

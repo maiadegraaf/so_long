@@ -17,8 +17,7 @@ void	initiate_tools(t_tools *tools)
 	tools->sand = convert_xpm("img/sand.xpm", *tools->vars);
 	tools->cactus = convert_xpm("img/cactus.xpm", *tools->vars);
 	tools->hovel = convert_xpm("img/hovel.xpm", *tools->vars);
-	tools->t_hawk = convert_xpm("img/tarantula_hawk.xpm", *tools->vars);
-	tools->yummy = convert_xpm("img/yum.xpm", *tools->vars);
+	initialize_yum(tools);
 	initialize_info(tools);
 	create_canvas(tools);
 	find_start(&tools);
@@ -34,8 +33,19 @@ void	initiate_tools(t_tools *tools)
 	tools->player.diff_x = 0;
 	tools->player.diff_y = 0;
 	tools->player.diff_y = 0;
+	tools->player.img = tools->tarantulas.up;
 	tools->yum = 0;
 	assign_bugs(tools);
+	tools->empty = determine_empty_space(tools->map);
+	create_t_hawk_list(tools);
+	printf("%d, %d\n", tools->t_hawks->t_hawk->x, tools->t_hawks->t_hawk->y);
+}
+
+void	initialize_yum(t_tools *tools)
+{
+	tools->yummy[0] = convert_xpm("img/yum/Y.xpm", *tools->vars);
+	tools->yummy[1] = convert_xpm("img/yum/U.xpm", *tools->vars);
+	tools->yummy[2] = convert_xpm("img/yum/M.xpm", *tools->vars);
 }
 
 void	create_canvas(t_tools *tools)

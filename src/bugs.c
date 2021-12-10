@@ -53,13 +53,21 @@ void	assign_bugs(t_tools *tools)
 
 void	yummy(t_tools *tools)
 {
-	int		x_y[2];
+	int	x_y[2];
+	int	i;
 
 	x_y[0] = 0;
 	x_y[1] = tools->map_h;
-	while (x_y[0] < tools->map_w)
+	while (x_y[0] < tools->map_w * 2)
 	{
-		canvas_info_pixel_put(60, x_y, &tools->canvas, &tools->yummy);
+		i = 0;
+		while (i < 3 && x_y[0] < tools->map_w * 2)
+		{
+			canvas_info_pixel_put(20, x_y, &tools->canvas, &tools->yummy[i]);
+			i++;
+			x_y[0]++;
+		}
+		canvas_info_pixel_put(20, x_y, &tools->canvas, &tools->info.blank);
 		x_y[0]++;
 	}
 }

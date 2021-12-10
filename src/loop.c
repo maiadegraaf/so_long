@@ -8,9 +8,8 @@ int	loop(t_tools *tools)
 	}
 	if (tools->yum)
 	{
-		printf("yum yum yum\n");
 		yummy(tools);
-		tools->yum = 0;
+		tools->yum--;
 	}
 	else
 		draw_info(tools, &tools->info);
