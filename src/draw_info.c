@@ -1,0 +1,82 @@
+#include "../includes/so_long.h"
+
+void	draw_info(t_tools *tools, t_info *info)
+{
+	int	x_y[2];
+	int	i_j[2];
+
+	x_y[0] = 0;
+	x_y[1] = tools->map_h * SPRITE_SIZE;
+	i_j[0] = tools->map_pxl_w;
+	i_j[1] = tools->map_pxl_h;
+	color_box(x_y, i_j, &tools->canvas);
+	x_y[1] = tools->map_h;
+	draw_moves_info(tools, info, x_y, tools->moves);
+	if (tools->map_w < 8)
+		draw_bug_info_double(tools, info, x_y, tools->num_bugs);
+	else
+		draw_bug_info(tools, info, x_y, tools->num_bugs);
+}
+
+void	draw_moves_info(t_tools *tools, t_info *info, int x_y[2], int moves)
+{
+	int	i;
+
+	i = 0;
+	while (i < 5)
+	{
+		canvas_info_pixel_put(20, x_y, &tools->canvas, &info->moves[i++]);
+		x_y[0]++;
+	}
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->blank);
+	x_y[0]++;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[moves / 100]);
+	x_y[0]++;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[moves / 10 % 10]);
+	x_y[0]++;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[moves % 10]);
+}
+
+void	draw_bug_info_double(t_tools *tools, t_info *info, int x_y[2], int bugs)
+{
+	int	i;
+
+	i = 0;
+	x_y[0] = 0;
+	x_y[1] += 1;
+	while (i < 4)
+	{
+		canvas_info_pixel_put(20, x_y, &tools->canvas, &info->bugs[i++]);
+		x_y[0]++;
+	}
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->blank);
+	x_y[0]++;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->blank);
+	x_y[0]++;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs / 100]);
+	x_y[0]++;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs / 10 % 10]);
+	x_y[0]++;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs % 10]);
+}
+
+void	draw_bug_info(t_tools *tools, t_info *info, int x_y[2], int bugs)
+{
+	int	i;
+
+	i = 3;
+	x_y[0] = (tools->map_w * 2) - 1;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs % 10]);
+	x_y[0]--;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs / 10 % 10]);
+	x_y[0]--;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs / 100]);
+	x_y[0]--;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->blank);
+	x_y[0]--;
+	while (i > -1)
+	{
+		canvas_info_pixel_put(20, x_y, &tools->canvas, &info->bugs[i--]);
+		x_y[0]--;
+	}
+}
