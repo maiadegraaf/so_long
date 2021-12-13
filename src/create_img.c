@@ -27,22 +27,19 @@ void	draw_map(t_tools *tools)
 		tmp = tmp->next;
 	}
 	canvas_p_pixel_put(&tools->canvas, tools->player.x, tools->player.y, &tools->player);
-	//draw_t_hawks(tools, tools->t_hawks);
+	draw_enemys(tools, tools->enemys);
 }
 
 #define SHUT(x) (void)x;
 
-void	draw_t_hawks(t_tools *tools, t_t_hawk_list *t_hawk)
+void	draw_enemys(t_tools *tools, t_enemy_list *enemy)
 {
-	t_t_hawk_list	*tmp;
+	t_enemy_list	*tmp;
 
-	tmp = t_hawk;
+	tmp = enemy;
 	while (tmp)
 	{
-		// SHUT(tools);
-		// getchar();
-		printf("x = %d\ty = %d\tcur_img = %d\n", tmp->t_hawk.x, tmp->t_hawk.y, tmp->t_hawk.cur_img);
-		canvas_p_pixel_put(&tools->canvas, tmp->t_hawk.x, tmp->t_hawk.y, &tmp->t_hawk);
+		canvas_p_pixel_put(&tools->canvas, tmp->enemy.x, tmp->enemy.y, &tmp->enemy);
 		tmp = tmp->next;
 	}
 }

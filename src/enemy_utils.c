@@ -1,20 +1,20 @@
 #include "../includes/so_long.h"
 
-t_t_hawk_list	*ft_t_hawk_listnew(t_player *t_hawk)
+t_enemy_list	*ft_enemy_listnew(t_player *enemy)
 {
-	t_t_hawk_list	*new_element;
+	t_enemy_list	*new_element;
 
-	new_element = (t_t_hawk_list *)malloc(sizeof(t_t_hawk_list));
+	new_element = (t_enemy_list *)malloc(sizeof(t_enemy_list));
 	if (!new_element)
 		return (0);
-	ft_memcpy(&new_element->t_hawk, t_hawk, sizeof(t_hawk));
+	ft_memcpy(&new_element->enemy, enemy, sizeof(enemy));
 	new_element->next = NULL;
 	return (new_element);
 }
 
-void	ft_t_hawk_listadd_back(t_t_hawk_list **lst, t_t_hawk_list *new)
+void	ft_enemy_listadd_back(t_enemy_list **lst, t_enemy_list *new)
 {
-	t_t_hawk_list	*tmp;
+	t_enemy_list	*tmp;
 
 	tmp = *lst;
 	if (!(*lst))
@@ -27,9 +27,9 @@ void	ft_t_hawk_listadd_back(t_t_hawk_list **lst, t_t_hawk_list *new)
 	tmp->next = new;
 }
 
-void	ft_t_hawk_listadd_front(t_t_hawk_list **lst, t_t_hawk_list *new)
+void	ft_enemy_listadd_front(t_enemy_list **lst, t_enemy_list *new)
 {
-	t_t_hawk_list	*tmp;
+	t_enemy_list	*tmp;
 
 	if (!*lst)
 	{
@@ -45,9 +45,9 @@ void	ft_t_hawk_listadd_front(t_t_hawk_list **lst, t_t_hawk_list *new)
 		tmp = tmp->next;
 }
 
-void	ft_t_hawk_listclear(t_t_hawk_list **lst)
+void	ft_enemy_listclear(t_enemy_list **lst)
 {
-	t_t_hawk_list	*tmp;
+	t_enemy_list	*tmp;
 
 	if (!*lst)
 		return ;
@@ -60,7 +60,7 @@ void	ft_t_hawk_listclear(t_t_hawk_list **lst)
 	*lst = NULL;
 }
 
-t_t_hawk_list	*ft_t_hawk_listlast(t_t_hawk_list *bugs)
+t_enemy_list	*ft_enemy_listlast(t_enemy_list *bugs)
 {
 	int	i;
 

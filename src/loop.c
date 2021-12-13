@@ -2,10 +2,17 @@
 
 int	loop(t_tools *tools)
 {
-	if (check_tarantula(&tools->player, tools))
+	t_enemy_list	*tmp;
+
+	tools->i++;
+	tmp = tools->enemys;
+	while (tmp)
 	{
-		draw_map(tools);
+		check_enemy(&tmp->enemy, tools);
+		tmp = tmp->next;
 	}
+	check_tarantula(&tools->player, tools);
+	draw_map(tools);
 	if (tools->yum)
 	{
 		yummy(tools);

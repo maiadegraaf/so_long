@@ -29,22 +29,28 @@ void	ft_mapadd_back(t_map **lst, t_map *new)
 	tmp->next = new;
 }
 
-void	ft_mapadd_front(t_map **lst, t_map *new)
+void	ft_mapdelone(t_map **lst, char key)
 {
-	t_map	*tmp;
+	t_map	*node;
+	t_map	*prev;
+	t_map	*start;
 
-	if (!*lst)
+	start = *lst;
+	node = start;
+	if ((*lst)->content == key)
 	{
-		new->next = NULL;
-		*lst = new;
+		*lst = node->next;
+		free(node);
 		return ;
 	}
-	new->next = *lst;
-	*lst = new;
-	tmp = *lst;
-	tmp = tmp->next;
-	while (tmp != NULL)
-		tmp = tmp->next;
+	while (node && node->content != key)
+	{
+		prev = node;
+		node = node->next;
+	}
+	prev->next = node->next;
+	free(node);
+	*lst = start;
 }
 
 void	ft_mapclear(t_map **lst)

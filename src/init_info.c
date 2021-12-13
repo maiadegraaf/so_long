@@ -38,6 +38,8 @@ void	initialize_info(t_tools *tools)
 	tools->info.moves[3] = convert_xpm("img/info/moves/E.xpm", *tools->vars);
 	tools->info.moves[4] = convert_xpm("img/info/moves/S.xpm", *tools->vars);
 	tools->info.blank = convert_xpm("img/info/blank.xpm", *tools->vars);
+	tools->info.err[0] = convert_xpm("img/info/ERR/E.xpm", *tools->vars);
+	tools->info.err[1] = convert_xpm("img/info/ERR/R.xpm", *tools->vars);
 	initialize_numbers(&tools->info, tools->vars);
 }
 

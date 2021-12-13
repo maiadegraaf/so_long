@@ -58,6 +58,7 @@ typedef struct s_info
 	t_data	num[10];
 	t_data	bugs[4];
 	t_data	moves[5];
+	t_data	err[2];
 	t_data	blank;
 }	t_info;
 
@@ -84,16 +85,11 @@ typedef struct s_player
 	t_data	*img;
 }	t_player;
 
-typedef struct s_img_t_hawk
+typedef struct s_enemy_list
 {
-	t_data	img[4];
-}	t_img_t_hawk;
-
-typedef struct s_t_hawk_list
-{
-	t_player				t_hawk;
-	struct s_t_hawk_list	*next;
-}	t_t_hawk_list;
+	t_player			enemy;
+	struct s_enemy_list	*next;
+}	t_enemy_list;
 
 typedef struct s_tools
 {
@@ -109,8 +105,9 @@ typedef struct s_tools
 	t_data			cactus;
 	t_tarantulas	tarantulas;
 	t_player		player;
-	t_t_hawk_list	*t_hawks;
-	int				num_t_hawks;
+	t_enemy_list	*enemys;
+	int				num_enemys;
+	t_data			enemy[4];
 	t_data			hovel;
 	int				e_x;
 	int				e_y;
@@ -124,6 +121,7 @@ typedef struct s_tools
 	int				moves;
 	t_info			info;
 	int				empty;
+	int				i;
 }	t_tools;
 
 //so_long
@@ -133,7 +131,7 @@ void			clear_map(t_map	*map);
 //t_map utils
 t_map			*ft_mapnew(int x, int y, char content);
 void			ft_mapadd_back(t_map **lst, t_map *new);
-void			ft_mapadd_front(t_map **lst, t_map *new);
+void			ft_mapdelone(t_map **lst, char key);
 void			ft_mapclear(t_map **lst);
 t_map			*ft_maplast(t_map *map);
 
@@ -159,7 +157,7 @@ void			canvas_info_pixel_put(int w, int x_y[2], t_data *canvas, t_data *sprite);
 t_data			convert_xpm(char *rel_p, t_vars vars);
 t_data			create_img(t_tools *tools, int w, int h);
 void			draw_map(t_tools *tools);
-void			draw_t_hawks(t_tools *tools, t_t_hawk_list *t_hawks);
+void			draw_enemys(t_tools *tools, t_enemy_list *enemys);
 
 //init_info
 void			color_box(int x_y[2], int i_j[2], t_data *img);
@@ -171,10 +169,11 @@ void			draw_info(t_tools *tools, t_info *info);
 void			draw_moves_info(t_tools *tools, t_info *info, int x_y[2], int moves);
 void			draw_bug_info_double(t_tools *tools, t_info *info, int x_y[2], int bugs);
 void			draw_bug_info(t_tools *tools, t_info *info, int x_y[2], int bugs);
+int				draw_error(t_tools *tools, t_info *info, int x_y[2]);
 
 //tools_tools.c
 void			initiate_tools(t_tools *tools);
-void			initialize_yum(t_tools *tools);
+void			initialize_extra_img(t_tools *tools);
 void			create_canvas(t_tools *tools);
 int				find_start(t_tools **tools);
 void			find_walls(t_tools **tools);
@@ -197,25 +196,25 @@ int				check_wasd(int keycode, t_tools *tools);
 //loop
 int				loop(t_tools *tools);
 
-//t_hawk_utils
-t_t_hawk_list	*ft_t_hawk_listnew(t_player *t_hawk);
-void			ft_t_hawk_listadd_back(t_t_hawk_list **lst, t_t_hawk_list *new);
-void			ft_t_hawk_listadd_front(t_t_hawk_list **lst, t_t_hawk_list *new);
-void			ft_t_hawk_listclear(t_t_hawk_list **lst);
-t_t_hawk_list	*ft_t_hawk_listlast(t_t_hawk_list *bugs);
+//enemy_utils
+t_enemy_list	*ft_enemy_listnew(t_player *enemy);
+void			ft_enemy_listadd_back(t_enemy_list **lst, t_enemy_list *new);
+void			ft_enemy_listadd_front(t_enemy_list **lst, t_enemy_list *new);
+void			ft_enemy_listclear(t_enemy_list **lst);
+t_enemy_list	*ft_enemy_listlast(t_enemy_list *bugs);
 
-//initiate_t_hawk
-void			initiate_t_hawk(t_tools *tools, t_player *t_hawk);
-int				determine_num_t_hawks(int empty);
-int				create_t_hawk_list(t_tools *tools);
-void	find_start_pos_t_hawk(t_tools *tools, t_player *t_hawk);
+//initiate_enemy
+void			initiate_enemy(t_tools *tools, t_player *enemy);
+int				determine_num_enemys(int empty);
+int				create_enemy_list(t_tools *tools);
+void			find_start_pos_enemy(t_tools *tools, t_player *enemy);
 
-//t_hawk
-int				**assign_pos(t_player *t_hawk);
+//enemy
+t_map			*assign_pos(t_player *enemy);
 int				check_not_all_neg(int **pos);
-void			find_new_pos_t_hawk(t_tools *tools, t_player *t_hawk);
-int				check_pos(t_map	*walls, t_t_hawk_list *l_t_hawk, int x, int y);
-int				check_t_hawk(t_player *t_hawk, t_tools *tools);
+void			find_new_pos_enemy(t_tools *tools, t_player *enemy);
+int				check_pos(t_map	*walls, t_tools *tools, int x, int y);
+int				check_enemy(t_player *enemy, t_tools *tools);
 
 //utils_bonus
 int				ft_rand(int weight);

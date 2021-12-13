@@ -6,7 +6,7 @@
 /*   By: maiadegraaf <maiadegraaf@student.codam.      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/01 09:21:49 by maiadegraaf   #+#    #+#                 */
-/*   Updated: 2021/12/10 13:40:47 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/13 14:54:12 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 void	initiate_tools(t_tools *tools)
 {
-	tools->sand = convert_xpm("img/sand.xpm", *tools->vars);
-	tools->cactus = convert_xpm("img/cactus.xpm", *tools->vars);
-	tools->hovel = convert_xpm("img/hovel.xpm", *tools->vars);
-	initialize_yum(tools);
+	initialize_extra_img(tools);
 	initialize_info(tools);
 	create_canvas(tools);
 	find_start(&tools);
@@ -36,13 +33,17 @@ void	initiate_tools(t_tools *tools)
 	tools->player.img = tools->tarantulas.up;
 	tools->yum = 0;
 	assign_bugs(tools);
+	tools->i = 0;
+	init_enemy_frames(tools);
 	tools->empty = determine_empty_space(tools->map);
-	create_t_hawk_list(tools);
-	// printf("in tools->>> %d, %d\n", tools->t_hawks->t_hawk->x, tools->t_hawks->t_hawk->y);
+	create_enemy_list(tools);
 }
 
-void	initialize_yum(t_tools *tools)
+void	initialize_extra_img(t_tools *tools)
 {
+	tools->sand = convert_xpm("img/sand.xpm", *tools->vars);
+	tools->cactus = convert_xpm("img/cactus.xpm", *tools->vars);
+	tools->hovel = convert_xpm("img/hovel.xpm", *tools->vars);
 	tools->yummy[0] = convert_xpm("img/yum/Y.xpm", *tools->vars);
 	tools->yummy[1] = convert_xpm("img/yum/U.xpm", *tools->vars);
 	tools->yummy[2] = convert_xpm("img/yum/M.xpm", *tools->vars);

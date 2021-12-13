@@ -30,6 +30,11 @@ void	draw_moves_info(t_tools *tools, t_info *info, int x_y[2], int moves)
 	}
 	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->blank);
 	x_y[0]++;
+	if (moves > 999)
+	{
+		draw_error(tools, info, x_y);
+		return ;
+	}
 	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[moves / 100]);
 	x_y[0]++;
 	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[moves / 10 % 10]);
@@ -53,6 +58,11 @@ void	draw_bug_info_double(t_tools *tools, t_info *info, int x_y[2], int bugs)
 	x_y[0]++;
 	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->blank);
 	x_y[0]++;
+	if (bugs > 999)
+	{
+		draw_error(tools, info, x_y);
+		return ;
+	}
 	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs / 100]);
 	x_y[0]++;
 	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs / 10 % 10]);
@@ -66,17 +76,33 @@ void	draw_bug_info(t_tools *tools, t_info *info, int x_y[2], int bugs)
 
 	i = 3;
 	x_y[0] = (tools->map_w * 2) - 1;
-	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs % 10]);
-	x_y[0]--;
-	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs / 10 % 10]);
-	x_y[0]--;
-	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs / 100]);
-	x_y[0]--;
-	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->blank);
-	x_y[0]--;
+	if (bugs < 1000)
+	{
+		canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs % 10]);
+		x_y[0]--;
+		canvas_info_pixel_put(20, x_y, &tools->canvas,
+			&info->num[bugs / 10 % 10]);
+		x_y[0]--;
+		canvas_info_pixel_put(20, x_y, &tools->canvas, &info->num[bugs / 100]);
+		x_y[0]--;
+		canvas_info_pixel_put(20, x_y, &tools->canvas, &info->blank);
+		x_y[0]--;
+	}
+	else
+		x_y[0] = draw_error(tools, info, x_y);
 	while (i > -1)
 	{
 		canvas_info_pixel_put(20, x_y, &tools->canvas, &info->bugs[i--]);
 		x_y[0]--;
 	}
+}
+
+int	draw_error(t_tools *tools, t_info *info, int x_y[2])
+{
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->err[0]);
+	x_y[0]++;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->err[1]);
+	x_y[0]++;
+	canvas_info_pixel_put(20, x_y, &tools->canvas, &info->err[1]);
+	return (x_y[0]);
 }
