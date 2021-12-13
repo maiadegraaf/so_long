@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   so_long.h                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/13 16:21:55 by mgraaf        #+#    #+#                 */
+/*   Updated: 2021/12/13 18:21:26 by mgraaf        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "../libraries/libft/libft.h"
@@ -40,6 +52,7 @@ typedef enum e_keys
 	KEY_A		= 0,
 	KEY_S		= 1,
 	KEY_D		= 2,
+	KEY_R		= 15,
 }	t_keys;
 
 typedef struct s_bugs
@@ -122,11 +135,18 @@ typedef struct s_tools
 	t_info			info;
 	int				empty;
 	int				i;
+	int				j;
+	t_data			game_over[6];
+	t_data			so_long[6];
+	int				g_o;
+	int				s_o;
 }	t_tools;
 
 //so_long
 int				ft_strlen_c(char *str, char c);
+int				extra_keys(int key_code, t_tools *tools);
 void			clear_map(t_map	*map);
+void			so_long(t_tools *tools);
 
 //t_map utils
 t_map			*ft_mapnew(int x, int y, char content);
@@ -149,26 +169,35 @@ int				check_invalid(t_map	*map, int x, int y);
 
 //my pxl put
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void			canvas_p_pixel_put(t_data *canvas, int x, int y, t_player *player);
+void			canvas_p_pixel_put(t_data *canvas, int x,
+					int y, t_player *player);
 void			canvas_pixel_put(t_data *canvas, int x, int y, t_data *sprite);
-void			canvas_info_pixel_put(int w, int x_y[2], t_data *canvas, t_data *sprite);
+void			canvas_info_pixel_put(int w, int x_y[2],
+					t_data *canvas, t_data *sprite);
 
 //create_img
-t_data			convert_xpm(char *rel_p, t_vars vars);
 t_data			create_img(t_tools *tools, int w, int h);
-void			draw_map(t_tools *tools);
 void			draw_enemys(t_tools *tools, t_enemy_list *enemys);
+t_bugs			*locate_bug(t_bugs	*bugs, int x, int y);
+
+//img_utils
+t_data			convert_xpm(char *rel_p, t_vars vars);
+void			draw_map(t_tools *tools);
+void			color_box(int x_y[2], int i_j[2], t_data *img, int color);
+void			initiate_end_game(t_tools *tools);
 
 //init_info
-void			color_box(int x_y[2], int i_j[2], t_data *img);
 void			initialize_numbers(t_info *info, t_vars *vars);
 void			initialize_info(t_tools *tools);
 
 //draw_info
 void			draw_info(t_tools *tools, t_info *info);
-void			draw_moves_info(t_tools *tools, t_info *info, int x_y[2], int moves);
-void			draw_bug_info_double(t_tools *tools, t_info *info, int x_y[2], int bugs);
-void			draw_bug_info(t_tools *tools, t_info *info, int x_y[2], int bugs);
+void			draw_moves_info(t_tools *tools, t_info *info,
+					int x_y[2], int moves);
+void			draw_bug_info_double(t_tools *tools, t_info *info,
+					int x_y[2], int bugs);
+void			draw_bug_info(t_tools *tools, t_info *info,
+					int x_y[2], int bugs);
 int				draw_error(t_tools *tools, t_info *info, int x_y[2]);
 
 //tools_tools.c
@@ -192,9 +221,11 @@ int				check_tarantula(t_player *player, t_tools *tools);
 
 //key_hook
 int				check_wasd(int keycode, t_tools *tools);
+int				check_death(t_tools	*tools);
 
 //loop
 int				loop(t_tools *tools);
+void			clear_player_info(t_player *player);
 
 //enemy_utils
 t_enemy_list	*ft_enemy_listnew(t_player *enemy);
@@ -204,10 +235,11 @@ void			ft_enemy_listclear(t_enemy_list **lst);
 t_enemy_list	*ft_enemy_listlast(t_enemy_list *bugs);
 
 //initiate_enemy
+void			init_enemy_frames(t_tools *tools);
 void			initiate_enemy(t_tools *tools, t_player *enemy);
 int				determine_num_enemys(int empty);
-int				create_enemy_list(t_tools *tools);
-void			find_start_pos_enemy(t_tools *tools, t_player *enemy);
+void			create_enemy_list(t_tools *tools);
+int				find_start_pos_enemy(t_tools *tools, t_player *enemy);
 
 //enemy
 t_map			*assign_pos(t_player *enemy);
@@ -219,5 +251,13 @@ int				check_enemy(t_player *enemy, t_tools *tools);
 //utils_bonus
 int				ft_rand(int weight);
 int				determine_empty_space(t_map *map);
+int				assign_new_number(int x_y);
+int				check_start_ok(t_tools *tools, int x, int y);
+
+//end_game
+void			end_so_long(t_tools *tools);
+void			game_over(t_tools *tools);
+void			canvas_end_pixel_put(int x_y[2], t_data *canvas,
+					t_data *sprite);
 
 #endif

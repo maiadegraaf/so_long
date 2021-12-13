@@ -1,20 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   init_info.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/13 15:22:16 by mgraaf        #+#    #+#                 */
+/*   Updated: 2021/12/13 16:32:08 by mgraaf        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
-void	color_box(int x_y[2], int i_j[2], t_data *img)
-{
-	int	k;
 
-	while (x_y[1] < i_j[1])
-	{
-		k = x_y[0];
-		while (k < i_j[0])
-		{
-			my_mlx_pixel_put(img, k, x_y[1], 0xE68B40);
-			k++;
-		}
-		x_y[1]++;
-	}
-}
 
 void	initialize_info(t_tools *tools)
 {

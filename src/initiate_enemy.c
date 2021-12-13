@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   initiate_enemy.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/13 15:22:28 by mgraaf        #+#    #+#                 */
+/*   Updated: 2021/12/13 17:53:47 by mgraaf        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 void	init_enemy_frames(t_tools *tools)
@@ -34,44 +46,46 @@ int	determine_num_enemys(int empty)
 	return (num_enemys);
 }
 
-int	create_enemy_list(t_tools *tools)
+void	create_enemy_list(t_tools *tools)
 {
 	t_player		enemy;
 	int				i;
 	t_enemy_list	*tmp;
-	t_enemy_list	*tmp_list;
 
 	tools->num_enemys = determine_num_enemys(tools->empty);
 	if (tools->num_enemys == 0)
-		return (0);
+		return ;
 	i = tools->num_enemys;
-	tmp_list = NULL;
+	tools->enemys = NULL;
 	while (i > 0)
 	{
 		tmp = ft_enemy_listnew(&enemy);
 		if (!tmp)
 		{
 			free(tmp);
-			ft_enemy_listclear(&tmp_list);
-			return (0);
+			ft_enemy_listclear(&tools->enemys);
+			tools->num_enemys = 0;
+			return ;
 		}
 		initiate_enemy(tools, &tmp->enemy);
-		find_start_pos_enemy(tools, &tmp->enemy);
-		ft_enemy_listadd_back(&tmp_list, tmp);
+		if (find_start_pos_enemy(tools, &tmp->enemy))
+			free(tmp);
+		else
+			ft_enemy_listadd_back(&tools->enemys, tmp);
 		i--;
 	}
-	tools->enemys = tmp_list;
-	return (1);
 }
 
-void	find_start_pos_enemy(t_tools *tools, t_player *enemy)
+int	find_start_pos_enemy(t_tools *tools, t_player *enemy)
 {
 	int	x;
 	int	y;
+	int	i;
 
+	i = 0;
 	x = rand() % tools->map_w - 1;
 	y = rand() % tools->map_h - 1;
-	while (check_pos(tools->walls, tools, x, y))
+	while (check_start_ok(tools, x, y))
 	{
 		if (x >= tools->map_w - 1)
 			x--;
@@ -80,14 +94,18 @@ void	find_start_pos_enemy(t_tools *tools, t_player *enemy)
 		else if (x <= 1)
 			x++;
 		else if (y <= 1)
-			y++;
-		if (ft_rand(50))
-			x++;
-		else
 			y--;
+		else if (ft_rand(50))
+			x = assign_new_number(x);
+		else
+			y = assign_new_number(y);
+		i++;
+		if (i == 40)
+			return (1);
 	}
 	enemy->x = x;
 	enemy->y = y;
 	enemy->new_x = x;
 	enemy->new_y = y;
+	return (0);
 }

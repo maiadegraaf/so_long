@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   create_img.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/13 15:17:44 by mgraaf        #+#    #+#                 */
+/*   Updated: 2021/12/13 15:30:03 by mgraaf        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 void	draw_map(t_tools *tools)
@@ -6,7 +18,6 @@ void	draw_map(t_tools *tools)
 	t_bugs	*b_tmp;
 
 	tmp = tools->map;
-	b_tmp = tools->bugs;
 	while (tmp)
 	{
 		canvas_pixel_put(&tools->canvas, tmp->x, tmp->y, &tools->sand);
@@ -16,21 +27,29 @@ void	draw_map(t_tools *tools)
 			canvas_pixel_put(&tools->canvas, tmp->x, tmp->y, &tools->hovel);
 		if (tmp->content == 'C')
 		{
-			while (b_tmp)
-			{
-				if (b_tmp->x == tmp->x && b_tmp->y == tmp->y)
-					break ;
-				b_tmp = b_tmp->next;
-			}
+			b_tmp = locate_bug(tools->bugs, tmp->x, tmp->y);
 			canvas_pixel_put(&tools->canvas, tmp->x, tmp->y, &b_tmp->bug);
 		}
 		tmp = tmp->next;
 	}
-	canvas_p_pixel_put(&tools->canvas, tools->player.x, tools->player.y, &tools->player);
+	canvas_p_pixel_put(&tools->canvas, tools->player.x,
+		tools->player.y, &tools->player);
 	draw_enemys(tools, tools->enemys);
 }
 
-#define SHUT(x) (void)x;
+t_bugs	*locate_bug(t_bugs	*bugs, int x, int y)
+{
+	t_bugs	*b_tmp;
+
+	b_tmp = bugs;
+	while (b_tmp)
+	{
+		if (b_tmp->x == x && b_tmp->y == y)
+			return (b_tmp);
+		b_tmp = b_tmp->next;
+	}
+	return (NULL);
+}
 
 void	draw_enemys(t_tools *tools, t_enemy_list *enemy)
 {
@@ -39,29 +58,8 @@ void	draw_enemys(t_tools *tools, t_enemy_list *enemy)
 	tmp = enemy;
 	while (tmp)
 	{
-		canvas_p_pixel_put(&tools->canvas, tmp->enemy.x, tmp->enemy.y, &tmp->enemy);
+		canvas_p_pixel_put(&tools->canvas, tmp->enemy.x,
+			tmp->enemy.y, &tmp->enemy);
 		tmp = tmp->next;
 	}
-}
-
-t_data	convert_xpm(char *rel_p, t_vars vars)
-{
-	t_data	img;
-	int		img_w;
-	int		img_h;
-
-	img.img = mlx_xpm_file_to_image(vars.mlx, rel_p, &img_w, &img_h);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-			&img.line_length, &img.endian);
-	return (img);
-}
-
-t_data	create_img(t_tools *tools, int w, int h)
-{
-	t_data	img;
-
-	img.img = mlx_new_image(tools->vars->mlx, w, h);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-			&img.line_length, &img.endian);
-	return (img);
 }

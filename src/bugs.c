@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   bugs.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/13 15:10:14 by mgraaf        #+#    #+#                 */
+/*   Updated: 2021/12/13 15:11:00 by mgraaf        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 void	find_bugs(t_tools **tools)
@@ -88,4 +100,3 @@ int	change_coordinate(t_tools *tools)
 	}
 	return (1);
 }
-

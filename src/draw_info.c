@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   draw_info.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/13 15:18:32 by mgraaf        #+#    #+#                 */
+/*   Updated: 2021/12/13 16:31:14 by mgraaf        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 void	draw_info(t_tools *tools, t_info *info)
@@ -9,7 +21,7 @@ void	draw_info(t_tools *tools, t_info *info)
 	x_y[1] = tools->map_h * SPRITE_SIZE;
 	i_j[0] = tools->map_pxl_w;
 	i_j[1] = tools->map_pxl_h;
-	color_box(x_y, i_j, &tools->canvas);
+	color_box(x_y, i_j, &tools->canvas, 0xE68B40);
 	x_y[1] = tools->map_h;
 	draw_moves_info(tools, info, x_y, tools->moves);
 	if (tools->map_w < 8)

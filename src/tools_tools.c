@@ -6,7 +6,7 @@
 /*   By: maiadegraaf <maiadegraaf@student.codam.      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/01 09:21:49 by maiadegraaf   #+#    #+#                 */
-/*   Updated: 2021/12/13 14:54:12 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/13 18:21:47 by mgraaf        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,16 @@ void	initiate_tools(t_tools *tools)
 
 void	initialize_extra_img(t_tools *tools)
 {
+	tools->g_o = 0;
+	tools->s_o = 0;
+	tools->j = 0;
 	tools->sand = convert_xpm("img/sand.xpm", *tools->vars);
 	tools->cactus = convert_xpm("img/cactus.xpm", *tools->vars);
 	tools->hovel = convert_xpm("img/hovel.xpm", *tools->vars);
 	tools->yummy[0] = convert_xpm("img/yum/Y.xpm", *tools->vars);
 	tools->yummy[1] = convert_xpm("img/yum/U.xpm", *tools->vars);
 	tools->yummy[2] = convert_xpm("img/yum/M.xpm", *tools->vars);
+	initiate_end_game(tools);
 }
 
 void	create_canvas(t_tools *tools)

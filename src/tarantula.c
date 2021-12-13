@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   tarantula.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/13 15:28:10 by mgraaf        #+#    #+#                 */
+/*   Updated: 2021/12/13 15:28:12 by mgraaf        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 void	initiate_tarantula(t_tools *tools)
@@ -57,13 +69,7 @@ int	check_tarantula(t_player *player, t_tools *tools)
 	}
 	else if (player->mv_pxl >= SPRITE_SIZE)
 	{
-		player->mv_pxl = 0;
-		player->mv_x = 0;
-		player->mv_y = 0;
-		player->x = player->new_x;
-		player->y = player->new_y;
-		player->diff_x = 0;
-		player->diff_y = 0;
+		clear_player_info(player);
 		tools->moves++;
 		ft_printf("moves = %d\n", tools->moves);
 	}
