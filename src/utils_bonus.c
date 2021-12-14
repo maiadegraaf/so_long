@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:28:19 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/13 17:48:30 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/14 09:35:04 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,12 @@ int	check_start_ok(t_tools *tools, int x, int y)
 	else if (check_pos(tools->walls, tools, x, y))
 		return (1);
 	return (0);
+}
+
+void	check_fringe(int *x_y, int max)
+{
+	if (*x_y >= max)
+		(*x_y)--;
+	else if (*x_y <= 1)
+		(*x_y)++;
 }

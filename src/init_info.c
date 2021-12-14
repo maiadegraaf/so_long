@@ -6,13 +6,11 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:22:16 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/13 16:32:08 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/14 09:21:25 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-
 
 void	initialize_info(t_tools *tools)
 {

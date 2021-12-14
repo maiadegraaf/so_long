@@ -6,44 +6,11 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:27:24 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/13 16:13:37 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/14 09:29:51 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int	ft_strlen_c(char *str, char c)
-{
-	int	i;
-
-	i = 0;
-	while (*str && *str != c)
-	{
-		i++;
-		str++;
-	}
-	return (i);
-}
-
-int	check_ber(char *input)
-{
-	char	**split;
-	int		i;
-
-	i = 0;
-	split = ft_split(input, '.');
-	if (ft_strncmp("ber", split[1], ft_strlen(split[1])))
-		i++;
-	free_arr(split);
-	free(split);
-	return (i);
-}
-
-void	clear_map(t_map	*map)
-{
-	ft_mapclear(&map);
-	free(map);
-}
 
 int	extra_keys(int key_code, t_tools *tools)
 {
@@ -81,7 +48,7 @@ int	main(int argc, char **argv)
 	}
 	vars.mlx = mlx_init();
 	tools.vars = &vars;
-	so_long(&tools);
+	//so_long(&tools);
 	initiate_tools(&tools);
 	tools.vars->win = mlx_new_window(tools.vars->mlx, tools.map_pxl_w,
 			tools.map_pxl_h, "eat ur bugs");

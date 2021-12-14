@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:18:48 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/13 15:47:53 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/14 10:00:43 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,25 @@ void	find_new_pos_enemy(t_tools *tools, t_player *enemy)
 
 int	check_pos(t_map	*walls, t_tools *tools, int x, int y)
 {
-	t_map			*tmp;
+	t_map	*w_tmp;
+	t_map	*e_tmp;
 
-	tmp = walls;
-	while (tmp)
+	w_tmp = walls;
+	e_tmp = tools->exit;
+	while (w_tmp)
 	{
-		if (tmp->x == x && tmp->y == y)
+		if (w_tmp->x == x && w_tmp->y == y)
 			return (1);
-		tmp = tmp->next;
+		w_tmp = w_tmp->next;
 	}
-	if (x == tools->e_x)
-		return (1);
-	if (y == tools->e_y)
-		return (1);
+	while (e_tmp)
+	{
+		if (x == e_tmp->x)
+			return (1);
+		if (y == e_tmp->y)
+			return (1);
+		e_tmp = e_tmp->next;
+	}
 	return (0);
 }
 

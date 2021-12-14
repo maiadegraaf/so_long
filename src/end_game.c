@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 16:24:39 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/13 18:22:52 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/13 19:21:35 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	end_so_long(t_tools *tools)
 	i = 0;
 	if (tools->i % 10 == 0)
 		tools->j++;
-	if (tools->j == 6)
+	if (tools->j == 4)
 		tools->j = 0;
 	canvas_end_pixel_put(x_y, &tools->canvas, &tools->so_long[tools->j]);
 }

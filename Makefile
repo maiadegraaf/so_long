@@ -18,7 +18,9 @@ SRCS	=	./src/so_long.c \
 			./src/utils_bonus.c \
 			./src/img_utils.c \
 			./src/initiate_enemy.c \
-			./src/end_game.c
+			./src/end_game.c \
+			./src/utils.c \
+			./src/find.c
 
 FLAGS	=	-Wall -Werror -Wextra -Imlx -g
 

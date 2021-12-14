@@ -6,11 +6,26 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:21:48 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/13 18:02:24 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/14 09:38:21 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+int	check_death(t_tools	*tools)
+{
+	t_enemy_list	*tmp;
+
+	tmp = tools->enemys;
+	while (tmp)
+	{
+		if (tmp->enemy.x == tools->player.new_x
+			&& tmp->enemy.y == tools->player.new_y)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
 
 void	if_not_end_game(t_tools *tools)
 {

@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:12:17 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/13 18:17:42 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/14 09:21:19 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,8 @@ void	initiate_end_game(t_tools *tools)
 	tools->game_over[3] = convert_xpm("img/game_over/3.xpm", *tools->vars);
 	tools->game_over[4] = convert_xpm("img/game_over/4.xpm", *tools->vars);
 	tools->game_over[5] = convert_xpm("img/game_over/5.xpm", *tools->vars);
-	tools->so_long[0] = convert_xpm("img/so_long/0.xpm", *tools->vars);
-	tools->so_long[1] = convert_xpm("img/so_long/1.xpm", *tools->vars);
-	tools->so_long[2] = convert_xpm("img/so_long/2.xpm", *tools->vars);
-	tools->so_long[3] = convert_xpm("img/so_long/3.xpm", *tools->vars);
-	tools->so_long[4] = convert_xpm("img/so_long/4.xpm", *tools->vars);
-	tools->so_long[5] = convert_xpm("img/so_long/5.xpm", *tools->vars);
+	tools->so_long[0] = convert_xpm("img/thanks/0.xpm", *tools->vars);
+	tools->so_long[1] = convert_xpm("img/thanks/1.xpm", *tools->vars);
+	tools->so_long[2] = convert_xpm("img/thanks/2.xpm", *tools->vars);
+	tools->so_long[3] = convert_xpm("img/thanks/3.xpm", *tools->vars);
 }

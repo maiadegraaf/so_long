@@ -6,7 +6,7 @@
 /*   By: maiadegraaf <maiadegraaf@student.codam.      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/01 09:21:49 by maiadegraaf   #+#    #+#                 */
-/*   Updated: 2021/12/13 18:21:47 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/14 10:22:23 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,10 @@
 void	initiate_tools(t_tools *tools)
 {
 	initialize_extra_img(tools);
-	initialize_info(tools);
-	create_canvas(tools);
 	find_start(&tools);
 	find_walls(&tools);
+	find_exits(&tools);
 	find_bugs(&tools);
-	initiate_bug(tools);
-	initiate_tarantula(tools);
 	tools->moves = 0;
 	tools->player.mv_pxl = 0;
 	tools->player.mv_x = 0;
@@ -36,7 +33,10 @@ void	initiate_tools(t_tools *tools)
 	tools->i = 0;
 	init_enemy_frames(tools);
 	tools->empty = determine_empty_space(tools->map);
-	create_enemy_list(tools);
+	tools->num_enemys = determine_num_enemys(tools->empty);
+	tools->enemys = NULL;
+	if (tools->num_enemys)
+		create_enemy_list(tools);
 }
 
 void	initialize_extra_img(t_tools *tools)
@@ -50,7 +50,11 @@ void	initialize_extra_img(t_tools *tools)
 	tools->yummy[0] = convert_xpm("img/yum/Y.xpm", *tools->vars);
 	tools->yummy[1] = convert_xpm("img/yum/U.xpm", *tools->vars);
 	tools->yummy[2] = convert_xpm("img/yum/M.xpm", *tools->vars);
+	initialize_info(tools);
+	initiate_tarantula(tools);
 	initiate_end_game(tools);
+	initiate_bug(tools);
+	create_canvas(tools);
 }
 
 void	create_canvas(t_tools *tools)
@@ -61,53 +65,4 @@ void	create_canvas(t_tools *tools)
 		tools->map_pxl_w = tools->map_w * SPRITE_SIZE;
 	tools->map_pxl_h = (tools->map_h * SPRITE_SIZE) + tools->info.info_h;
 	tools->canvas = create_img(tools, tools->map_pxl_w, tools->map_pxl_h);
-}
-
-void	find_walls(t_tools **tools)
-{
-	t_map	*tmp;
-	t_map	*walls;
-	t_map	*node;
-
-	walls = NULL;
-	tmp = (*tools)->map;
-	while (tmp)
-	{
-		if (tmp->content == '1')
-		{
-			node = ft_mapnew(tmp->x, tmp->y, tmp->content);
-			if (!node)
-			{
-				ft_mapclear(&walls);
-				return ;
-			}
-			ft_mapadd_back(&walls, node);
-		}	
-		tmp = tmp->next;
-	}
-	(*tools)->walls = walls;
-}
-
-int	find_start(t_tools **tools)
-{
-	t_map	*tmp;
-
-	tmp = (*tools)->map;
-	while (tmp)
-	{
-		if (tmp->content == 'P')
-		{
-			(*tools)->player.x = tmp->x;
-			(*tools)->player.y = tmp->y;
-		}
-		if (tmp->content == 'E')
-		{
-			(*tools)->e_x = tmp->x;
-			(*tools)->e_y = tmp->y;
-		}
-		tmp = tmp->next;
-	}
-	(*tools)->player.new_x = (*tools)->player.x;
-	(*tools)->player.new_y = (*tools)->player.y;
-	return (1);
 }

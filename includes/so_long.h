@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 16:21:55 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/13 18:21:26 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/14 10:15:42 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,7 @@ typedef struct s_tools
 	int				num_enemys;
 	t_data			enemy[4];
 	t_data			hovel;
-	int				e_x;
-	int				e_y;
+	t_map			*exit;
 	t_data			bug[3];
 	t_bugs			*bugs;
 	t_data			yummy[3];
@@ -137,15 +136,14 @@ typedef struct s_tools
 	int				i;
 	int				j;
 	t_data			game_over[6];
-	t_data			so_long[6];
+	t_data			so_long[4];
 	int				g_o;
 	int				s_o;
 }	t_tools;
 
 //so_long
-int				ft_strlen_c(char *str, char c);
+
 int				extra_keys(int key_code, t_tools *tools);
-void			clear_map(t_map	*map);
 void			so_long(t_tools *tools);
 
 //t_map utils
@@ -204,6 +202,9 @@ int				draw_error(t_tools *tools, t_info *info, int x_y[2]);
 void			initiate_tools(t_tools *tools);
 void			initialize_extra_img(t_tools *tools);
 void			create_canvas(t_tools *tools);
+
+//find.c
+void			find_exits(t_tools **tools);
 int				find_start(t_tools **tools);
 void			find_walls(t_tools **tools);
 
@@ -222,6 +223,7 @@ int				check_tarantula(t_player *player, t_tools *tools);
 //key_hook
 int				check_wasd(int keycode, t_tools *tools);
 int				check_death(t_tools	*tools);
+int				check_exit(t_tools *tools);
 
 //loop
 int				loop(t_tools *tools);
@@ -248,11 +250,17 @@ void			find_new_pos_enemy(t_tools *tools, t_player *enemy);
 int				check_pos(t_map	*walls, t_tools *tools, int x, int y);
 int				check_enemy(t_player *enemy, t_tools *tools);
 
+//utils
+int				check_ber(char *input);
+int				ft_strlen_c(char *str, char c);
+void			clear_map(t_map	*map);
+
 //utils_bonus
 int				ft_rand(int weight);
 int				determine_empty_space(t_map *map);
 int				assign_new_number(int x_y);
 int				check_start_ok(t_tools *tools, int x, int y);
+void			check_fringe(int *x_y, int max);
 
 //end_game
 void			end_so_long(t_tools *tools);

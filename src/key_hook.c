@@ -6,7 +6,7 @@
 /*   By: maiadegraaf <maiadegraaf@student.codam.      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/01 10:36:52 by maiadegraaf   #+#    #+#                 */
-/*   Updated: 2021/12/13 17:25:17 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/14 09:41:33 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,14 @@ int	check_bugs(t_tools *tools)
 	return (0);
 }
 
-int	check_death(t_tools	*tools)
+int	check_exit(t_tools *tools)
 {
-	t_enemy_list	*tmp;
+	t_map	*tmp;
 
-	tmp = tools->enemys;
+	tmp = tools->exit;
 	while (tmp)
 	{
-		if (tmp->enemy.x == tools->player.new_x
-			&& tmp->enemy.y == tools->player.new_y)
+		if (tmp->x == tools->player.new_x && tmp->y == tools->player.new_y)
 			return (1);
 		tmp = tmp->next;
 	}
@@ -78,14 +77,10 @@ int	check_params(t_tools *tools)
 	}
 	if (check_bugs(tools))
 		return (1);
-	if (tools->e_x == tools->player.new_x
-		&& tools->e_y == tools->player.new_y
-		&& tools->num_bugs == 0)
+	if (check_exit(tools))
 	{
 		tools->s_o = 1;
 		ft_printf("so long\n");
-		// mlx_destroy_window(tools->vars->mlx, tools->vars->win);
-		// exit(0);
 	}
 	return (1);
 }
