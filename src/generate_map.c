@@ -6,7 +6,7 @@
 /*   By: maiadegraaf <maiadegraaf@student.codam.      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/01 09:21:37 by maiadegraaf   #+#    #+#                 */
-/*   Updated: 2021/12/09 19:26:58 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/14 16:11:59 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,10 @@ int	generate_map(char *input, t_tools *tools)
 			return (1);
 		}
 		tools->map_h++;
+		free(init);
 		init = get_next_line(fd);
 	}
+	free(init);
 	if (check_invalid(tools->map, tools->map_w, tools->map_h))
 	{
 		clear_map(tools->map);

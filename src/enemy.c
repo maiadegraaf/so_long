@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:18:48 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/14 10:00:43 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/14 18:10:08 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ t_map	*assign_pos(t_player *enemy)
 
 void	determine_x_y(t_player *enemy, t_map *pos, int i)
 {
-	int	j;
-	int	r;
+	int		j;
+	int		r;
+	t_map	*start;
 
+	start = pos;
 	j = 4 - i;
 	r = rand() % j;
 	j = 0;
@@ -48,6 +50,7 @@ void	determine_x_y(t_player *enemy, t_map *pos, int i)
 	}
 	enemy->new_x = pos->x;
 	enemy->new_y = pos->y;
+	ft_mapclear(&start);
 }
 
 void	find_new_pos_enemy(t_tools *tools, t_player *enemy)
@@ -76,6 +79,7 @@ void	find_new_pos_enemy(t_tools *tools, t_player *enemy)
 	}
 	if (i == 4)
 		return ;
+	ft_mapclear(&pos);
 	determine_x_y(enemy, start, i);
 }
 

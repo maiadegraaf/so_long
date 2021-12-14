@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:17:44 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/13 15:30:03 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/14 17:37:32 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	draw_map(t_tools *tools)
 	t_bugs	*b_tmp;
 
 	tmp = tools->map;
+	mlx_destroy_image(tools->vars->mlx, tools->canvas.img);
+	create_canvas(tools);
 	while (tmp)
 	{
 		canvas_pixel_put(&tools->canvas, tmp->x, tmp->y, &tools->sand);

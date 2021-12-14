@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:21:48 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/14 09:38:21 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/14 18:10:31 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	loop(t_tools *tools)
 		if_not_end_game(tools);
 	mlx_put_image_to_window(tools->vars->mlx, tools->vars->win,
 		tools->canvas.img, 0, 0);
+	// if (tools->i == 50)
+	// 	destroy_window(tools);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 16:21:55 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/14 10:15:42 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/14 17:33:28 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,9 +142,9 @@ typedef struct s_tools
 }	t_tools;
 
 //so_long
-
 int				extra_keys(int key_code, t_tools *tools);
-void			so_long(t_tools *tools);
+int				destroy_window(t_tools *tools);
+void			free_all(t_tools *tools);
 
 //t_map utils
 t_map			*ft_mapnew(int x, int y, char content);

@@ -35,7 +35,7 @@ OBJS	=	$(SRCS:%.c=%.o)
 all: $(LIBFT) $(MLX) $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	$(CC) -g -fsanitize=address $^ -o $(NAME)
+	$(CC) -g $^ -o $(NAME)
  
 %.o: %.c $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@
@@ -58,3 +58,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+#-fsanitize=address
