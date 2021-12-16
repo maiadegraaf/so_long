@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:18:48 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/14 18:10:08 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/15 14:39:29 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,8 @@ int	check_pos(t_map	*walls, t_tools *tools, int x, int y)
 
 int	check_enemy(t_player *enemy, t_tools *tools)
 {
-	if (enemy->new_x == enemy->x && enemy->new_y == enemy->y)
+	if (enemy->new_x == enemy->x && enemy->new_y == enemy->y
+		&& tools->i % 50 == 0)
 		find_new_pos_enemy(tools, enemy);
 	if (enemy->mv_pxl < SPRITE_SIZE)
 	{
@@ -128,4 +129,4 @@ int	check_enemy(t_player *enemy, t_tools *tools)
 	return (1);
 }
 
-//&& tools->i % 50 == 0
+//

@@ -6,7 +6,7 @@
 /*   By: maiadegraaf <maiadegraaf@student.codam.      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/01 10:36:52 by maiadegraaf   #+#    #+#                 */
-/*   Updated: 2021/12/14 09:41:33 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/14 21:39:42 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	check_params(t_tools *tools)
 	}
 	if (check_bugs(tools))
 		return (1);
-	if (check_exit(tools))
+	if (!tools->num_bugs && check_exit(tools))
 	{
 		tools->s_o = 1;
 		ft_printf("so long\n");

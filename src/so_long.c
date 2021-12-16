@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:27:24 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/14 18:11:54 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/14 21:31:54 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	free_all(t_tools *tools)
 	mlx_destroy_image(tools->vars->mlx, tools->cactus.img);
 	mlx_destroy_image(tools->vars->mlx, tools->hovel.img);
 }
-
 
 /*
 TO DO:
