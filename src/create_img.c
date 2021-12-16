@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:17:44 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/14 17:37:32 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/16 14:37:06 by mgraaf        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	draw_map(t_tools *tools)
 	}
 	canvas_p_pixel_put(&tools->canvas, tools->player.x,
 		tools->player.y, &tools->player);
-	draw_enemys(tools, tools->enemys);
 }
 
 t_bugs	*locate_bug(t_bugs	*bugs, int x, int y)
@@ -51,17 +50,4 @@ t_bugs	*locate_bug(t_bugs	*bugs, int x, int y)
 		b_tmp = b_tmp->next;
 	}
 	return (NULL);
-}
-
-void	draw_enemys(t_tools *tools, t_enemy_list *enemy)
-{
-	t_enemy_list	*tmp;
-
-	tmp = enemy;
-	while (tmp)
-	{
-		canvas_p_pixel_put(&tools->canvas, tmp->enemy.x,
-			tmp->enemy.y, &tmp->enemy);
-		tmp = tmp->next;
-	}
 }

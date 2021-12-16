@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_strmapi.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/16 14:24:33 by mgraaf        #+#    #+#                 */
+/*   Updated: 2021/12/16 14:24:45 by mgraaf        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
@@ -19,18 +31,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	ret[i] = '\0';
 	return (ret);
 }
-
-// char f(unsigned int i, char c)
-// {
-// 	char str;
-// 	str = c + i;
-// 	return (str);
-// }
-
-// int main()
-// {
-// 	char str1[] = "override this !";
-// 	char* str2;
-// 	str2 = ft_strmapi(str1, *f);
-// 	printf("%s\n", str2);
-// }

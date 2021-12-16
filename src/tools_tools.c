@@ -6,7 +6,7 @@
 /*   By: maiadegraaf <maiadegraaf@student.codam.      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/01 09:21:49 by maiadegraaf   #+#    #+#                 */
-/*   Updated: 2021/12/14 10:22:23 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/16 14:30:14 by mgraaf        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ void	initiate_tools(t_tools *tools)
 	tools->yum = 0;
 	assign_bugs(tools);
 	tools->i = 0;
-	init_enemy_frames(tools);
-	tools->empty = determine_empty_space(tools->map);
-	tools->num_enemys = determine_num_enemys(tools->empty);
-	tools->enemys = NULL;
-	if (tools->num_enemys)
-		create_enemy_list(tools);
 }
 
 void	initialize_extra_img(t_tools *tools)

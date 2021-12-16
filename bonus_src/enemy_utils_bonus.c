@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   enemy_utils.c                                      :+:    :+:            */
+/*   enemy_utils_bonus.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:22:04 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/14 16:10:22 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/16 14:36:10 by mgraaf        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 t_enemy_list	*ft_enemy_listnew(t_player *enemy)
 {

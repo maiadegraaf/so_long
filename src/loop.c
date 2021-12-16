@@ -6,43 +6,15 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:21:48 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/14 18:10:31 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/16 14:28:25 by mgraaf        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	check_death(t_tools	*tools)
-{
-	t_enemy_list	*tmp;
-
-	tmp = tools->enemys;
-	while (tmp)
-	{
-		if (tmp->enemy.x == tools->player.new_x
-			&& tmp->enemy.y == tools->player.new_y)
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
-
 void	if_not_end_game(t_tools *tools)
 {
-	t_enemy_list	*tmp;
-
-	tmp = tools->enemys;
-	while (tmp)
-	{
-		check_enemy(&tmp->enemy, tools);
-		tmp = tmp->next;
-	}
 	check_tarantula(&tools->player, tools);
-	if (check_death(tools))
-	{
-		tools->g_o = 1;
-		ft_printf("Game over :(\n");
-	}
 	draw_map(tools);
 	if (tools->yum)
 	{
@@ -64,8 +36,6 @@ int	loop(t_tools *tools)
 		if_not_end_game(tools);
 	mlx_put_image_to_window(tools->vars->mlx, tools->vars->win,
 		tools->canvas.img, 0, 0);
-	// if (tools->i == 50)
-	// 	destroy_window(tools);
 	return (0);
 }
 

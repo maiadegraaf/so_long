@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   initiate_enemy.c                                   :+:    :+:            */
+/*   initiate_enemy_bonus.c                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:22:28 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/14 09:35:15 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/16 14:36:10 by mgraaf        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	init_enemy_frames(t_tools *tools)
 {

@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:27:24 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/14 21:31:54 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/16 15:46:37 by mgraaf        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	extra_keys(int key_code, t_tools *tools)
 {
 	if (key_code == ESC)
-	{
 		destroy_window(tools);
-	}
 	return (0);
 }
 
@@ -25,7 +23,6 @@ int	destroy_window(t_tools *tools)
 {
 	mlx_destroy_window(tools->vars->mlx, tools->vars->win);
 	free_all(tools);
-	system("leaks so_long");
 	exit(0);
 }
 
@@ -47,14 +44,12 @@ void	free_all(t_tools *tools)
 	ft_mapclear(&tools->exit);
 	ft_mapclear(&tools->walls);
 	ft_bugsclear(&tools->bugs);
-	ft_enemy_listclear(&tools->enemys);
 	destroy_img_frames(tools->tarantulas.up, tools->vars->mlx, 4);
 	destroy_img_frames(tools->tarantulas.down, tools->vars->mlx, 4);
 	destroy_img_frames(tools->tarantulas.left, tools->vars->mlx, 4);
 	destroy_img_frames(tools->tarantulas.right, tools->vars->mlx, 4);
 	destroy_img_frames(tools->yummy, tools->vars->mlx, 3);
 	destroy_img_frames(tools->bug, tools->vars->mlx, 3);
-	destroy_img_frames(tools->enemy, tools->vars->mlx, 4);
 	destroy_img_frames(tools->game_over, tools->vars->mlx, 6);
 	destroy_img_frames(tools->so_long, tools->vars->mlx, 4);
 	destroy_img_frames(tools->info.num, tools->vars->mlx, 10);
@@ -68,24 +63,15 @@ void	free_all(t_tools *tools)
 	mlx_destroy_image(tools->vars->mlx, tools->hovel.img);
 }
 
-/*
-TO DO:
-
--> seperate bonus;
-*/
-
 int	main(int argc, char **argv)
 {
 	t_tools	tools;
 	t_vars	vars;
 
-	if (argc == 1)
-		return (0);
-	if (check_ber(argv[1]) || generate_map(argv[1], &tools))
-	{
-		printf ("ERROR\n");
-		return (1);
-	}
+	if (argc != 2)
+		ft_error(3);
+	check_ber(argv[1]);
+	generate_map(argv[1], &tools);
 	vars.mlx = mlx_init();
 	tools.vars = &vars;
 	initiate_tools(&tools);

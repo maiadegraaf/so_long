@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_strtrim.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/16 14:25:05 by mgraaf        #+#    #+#                 */
+/*   Updated: 2021/12/16 14:25:11 by mgraaf        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int	begin_chars(char const *s1, char const *set)
@@ -27,7 +39,7 @@ int	begin_chars(char const *s1, char const *set)
 	return (char_at_begin);
 }
 
-int	end_chars(char const *s1, char const *set, int	len)
+int	end_chars(char const *s1, char const *set, int len)
 {
 	int	i;
 	int	char_at_end;

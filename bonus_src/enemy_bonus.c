@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   enemy.c                                            :+:    :+:            */
+/*   enemy_bonus.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:18:48 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/15 14:39:29 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/16 14:36:10 by mgraaf        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 t_map	*assign_pos(t_player *enemy)
 {
@@ -57,7 +57,6 @@ void	find_new_pos_enemy(t_tools *tools, t_player *enemy)
 {
 	t_map	*pos;
 	t_map	*start;
-	t_map	*prev;
 	int		i;
 
 	pos = assign_pos(enemy);
@@ -72,10 +71,7 @@ void	find_new_pos_enemy(t_tools *tools, t_player *enemy)
 			i++;
 		}
 		if (pos)
-		{
-			prev = pos;
 			pos = pos->next;
-		}
 	}
 	if (i == 4)
 		return ;
@@ -109,8 +105,7 @@ int	check_pos(t_map	*walls, t_tools *tools, int x, int y)
 
 int	check_enemy(t_player *enemy, t_tools *tools)
 {
-	if (enemy->new_x == enemy->x && enemy->new_y == enemy->y
-		&& tools->i % 50 == 0)
+	if (enemy->new_x == enemy->x && enemy->new_y == enemy->y)
 		find_new_pos_enemy(tools, enemy);
 	if (enemy->mv_pxl < SPRITE_SIZE)
 	{

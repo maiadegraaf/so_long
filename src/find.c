@@ -6,7 +6,7 @@
 /*   By: maiadegraaf <maiadegraaf@student.codam.      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/14 10:21:49 by maiadegraaf   #+#    #+#                 */
-/*   Updated: 2021/12/14 10:21:52 by maiadegraaf   ########   odam.nl         */
+/*   Updated: 2021/12/16 13:40:29 by mgraaf        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	find_start(t_tools **tools)
 		{
 			(*tools)->player.x = tmp->x;
 			(*tools)->player.y = tmp->y;
+			break ;
 		}
 		tmp = tmp->next;
 	}
