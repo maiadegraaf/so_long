@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:10:14 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/13 15:11:00 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/16 16:40:25 by mgraaf        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void	yummy(t_tools *tools)
 			i++;
 			x_y[0]++;
 		}
-		canvas_info_pixel_put(20, x_y, &tools->canvas, &tools->info.blank);
+		if (x_y[0] < tools->map_w * 2)
+			canvas_info_pixel_put(20, x_y, &tools->canvas, &tools->info.blank);
 		x_y[0]++;
 	}
 }

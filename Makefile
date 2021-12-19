@@ -63,7 +63,7 @@ endif
 all: $(LIBFT) $(MLX) $(NAME)
 
 $(NAME): $(ALL_OBJS) $(LIBFT) $(MLX)
-	$(CC) -g $^ -o $(NAME)
+	$(CC) -g -fsanitize=address $^ -o $(NAME)
 
 bonus: 
 	$(MAKE) WITH_BONUS=1
