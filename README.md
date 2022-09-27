@@ -33,6 +33,11 @@ The Enemy:
 
 ![AnyConv com__0(1)](https://user-images.githubusercontent.com/68693691/192498300-c878091c-91c5-481a-980e-6766dc81e90a.png)
 
+## How it works:
+The graphics are handled by a library called ```minilibx```.
+
+### 1. Parsing the map:
+The program takes 1 argument; a map.  The parser makes sure the file has the correct ```.ber``` filetype.  It then uses **get_next_line** to read through the file, each line is then parsed to determine the location of the walls (```1```), collectables (```C```), the player (```P```), the exit (```E```), and navicable tiles (```0```).
 
 ## Gameplay:
 ![ezgif com-gif-maker(1)](https://user-images.githubusercontent.com/68693691/192513482-ae388fc5-9532-4c3e-a185-3643cd27f225.gif)
