@@ -35,5 +35,6 @@ The Enemy:
 
 
 ## Gameplay:
-![ezgif com-gif-maker(1)](https://user-images.githubusercontent.com/68693691/192502678-2afd01c3-ec8d-47b5-94b6-138ed469d515.gif)
+![ezgif com-gif-maker(1)](https://user-images.githubusercontent.com/68693691/192513482-ae388fc5-9532-4c3e-a185-3643cd27f225.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/68693691/192511286-914c9f52-b897-461a-82b8-ae97404f00fb.gif)
 
