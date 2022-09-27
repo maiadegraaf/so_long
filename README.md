@@ -5,6 +5,12 @@ I really enjoyed this project, it was the first truely visual project that I've 
 
 <img width="202" alt="Screen Shot 2022-09-27 at 1 07 21 PM" src="https://user-images.githubusercontent.com/68693691/192509889-f9ad72f3-61fa-49af-a9cb-4c8b54ffca91.png">
 
+### Table of Content:
+- [Game attributes](#game-attributes)
+- [How it works](#how-it-works)
+- [Gameplay](#gameplay)
+- [Installation](#installation)
+
 ## Game attributes:
 The player’s goal is to collect every collectible present on the map, then escape
 chosing the shortest possible route.
@@ -16,7 +22,7 @@ chosing the shortest possible route.
 * ``` ESC ``` exits the game.
 * ```R``` resets the game to the starting position. 
 
-### The assets:
+### Sprites and Assets:
 The Player:
 
 ![AnyConv com__0](https://user-images.githubusercontent.com/68693691/192497974-c3c7b530-e26c-4aa4-87f9-d6b26133ca09.png)
@@ -56,7 +62,7 @@ The parser returns an error if the map:
 * is not enclosed by walls.
 
 ### 2. Setting up the game:
-The program then takes the information obtained by the parser, initializes all the assets in the correct location and loops through each image in order to correctly place all the asset pixels to an image which is then pushed to the window, through the use of ```MLX``` functions.  Furthermore this stage also assigns number of enemys, which is done through a combination of a random function and the number of empty tiles in the game, as well as their starting positions.
+The program then takes the information obtained by the parser, initializes all the assets in the correct location and loops through each image in order to correctly place all the asset pixels to an image which is then pushed to the window, through the use of ```MLX``` functions.  Furthermore this stage also assigns number of enemies, which is randomly assigned based on the number of empty tiles in the game.  This means that enemies rarely appear in smaller maps.  The enemy starting positions are also determined, which is also random with the exception of walls and on the x and y axis of the player and the exit, as to not make it truly impossible.
 
 ### 3. Waiting for action:
 As the ```MLX``` library initiates an infinite loop, the game essentially waits for the player to perform one of the actions.  The enemys moves independently from the player, and an algorithm determines the direction they move in.  If the player presses ```W, A, S, and D``` or the arrow keys, the program first checks if the move is possible, and if the player is on a collectible or the exit.  The program then stores this information.  A seperate loop constantly checks if a move has been made and then alters the location on the image pushed to the window. If the player has consumed all the collectibles and is on the exit the game goes in to ```end_game``` mode. Else, if the player gets eaten (ie touched) by an enemy the game goes into ```game_over``` mode.
@@ -64,4 +70,29 @@ As the ```MLX``` library initiates an infinite loop, the game essentially waits 
 ## Gameplay:
 ![ezgif com-gif-maker(1)](https://user-images.githubusercontent.com/68693691/192513482-ae388fc5-9532-4c3e-a185-3643cd27f225.gif)
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/68693691/192511286-914c9f52-b897-461a-82b8-ae97404f00fb.gif)
+
+## Installation:
+
+Clone the repository
+``` 
+git clone https://github.com/maiadegraaf/so_long.git
+cd so_long
+make
+```
+### Usage:
+As the bonus part of this project includes some functions not allowed in the mandatory part, I had to seperate my files.  As such the mandatory part does not include any enemies.
+
+- **Easy mode:** *no enemies* (mandatory):
+  - ```make```
+- **Hard mode:** *with enemies (bonus):
+  - ```make bonus```
+  
+### Run
+The program runs with one arguement, a file with a ```.ber``` extention.
+I have included a bunch of maps in ```./maps/```
+
+Example:
+```
+./so_long maps/maze.ber
+```
 
