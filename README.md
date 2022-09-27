@@ -1,6 +1,8 @@
 # so_long
 A basic 2D game in which a trantula must eat all the bugs and then exit.
 
+I really enjoyed this project, it was the first truely visual project that I've done.  This meant the project was quite addictive as everything I added to it made quite a difference.  I completed the mandatory part quite quickly but I really wanted to add animations, as well as smooth movements between each tile.  This ultimately led to me completely restructuring my project as it quickly became far to slow to loop through the frames while smoothly moving across the window, but the final result meant it was all worth it 😄
+
 <img width="202" alt="Screen Shot 2022-09-27 at 1 07 21 PM" src="https://user-images.githubusercontent.com/68693691/192509889-f9ad72f3-61fa-49af-a9cb-4c8b54ffca91.png">
 
 ## Game attributes:
