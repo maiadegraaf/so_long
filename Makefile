@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: maiadegraaf <maiadegraaf@student.codam.      +#+                      #
+#                                                    +#+                       #
+#    Created: 2022/01/06 16:26:08 by maiadegraaf   #+#    #+#                  #
+#    Updated: 2022/01/06 16:26:12 by maiadegraaf   ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	=		so_long
 
 SRCS	=		./src/so_long.c \
@@ -63,7 +75,7 @@ endif
 all: $(LIBFT) $(MLX) $(NAME)
 
 $(NAME): $(ALL_OBJS) $(LIBFT) $(MLX)
-	$(CC) -g -fsanitize=address $^ -o $(NAME)
+	$(CC) -g $^ -o $(NAME)
 
 bonus: 
 	$(MAKE) WITH_BONUS=1

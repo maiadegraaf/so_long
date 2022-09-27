@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 15:27:24 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/16 14:36:58 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/23 16:51:39 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ int	extra_keys(int key_code, t_tools *tools)
 {
 	if (key_code == ESC)
 		destroy_window(tools);
+	if (key_code == KEY_R)
+	{
+		free_all(tools);
+		generate_map(tools->argv, tools);
+		initiate_tools(tools);
+	}
 	return (0);
 }
 
@@ -73,6 +79,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		ft_error(3);
 	check_ber(argv[1]);
+	tools.argv = argv[1];
 	generate_map(argv[1], &tools);
 	vars.mlx = mlx_init();
 	tools.vars = &vars;

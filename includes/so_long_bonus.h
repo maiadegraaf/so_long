@@ -6,7 +6,7 @@
 /*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/13 16:21:55 by mgraaf        #+#    #+#                 */
-/*   Updated: 2021/12/16 14:33:13 by mgraaf        ########   odam.nl         */
+/*   Updated: 2021/12/23 16:49:00 by maiadegraaf   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct s_enemy_list
 
 typedef struct s_tools
 {
+	char			*argv;
 	t_vars			*vars;
 	t_map			*map;
 	int				map_w;
