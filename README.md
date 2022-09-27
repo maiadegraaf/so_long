@@ -1,14 +1,18 @@
 # so_long
 A basic 2D game in which a trantula must eat all the bugs and then exit.
 
+<img width="202" alt="Screen Shot 2022-09-27 at 1 07 21 PM" src="https://user-images.githubusercontent.com/68693691/192509889-f9ad72f3-61fa-49af-a9cb-4c8b54ffca91.png">
+
 ## Game attributes:
 The player’s goal is to collect every collectible present on the map, then escape
 chosing the shortest possible route.
-* The W, A, S, and D or the arrow keys are used to move the main character.
+* The ```W, A, S, and D``` or the arrow keys are used to move the main character.
 * The player is able to move in these 4 directions: up, down, left, right.
 * The player cannot move into walls.
 * At every move, the current number of movements is displayed in the shell as well as on the screen.
 * The game has a top down, 2D view.
+* ``` ESC ``` exits the game.
+* ```R``` resets the game to the starting position. 
 
 ### The assets:
 The Player:
